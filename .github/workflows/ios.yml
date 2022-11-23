@@ -1,17 +1,19 @@
-name: Swift
+name: Xcode - Build Analyze Test
 
-on: [push]
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build:
-
-    runs-on: macOS-latest
+    name: Build and analyze and test using xcodebuild command
+    runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Force Xcode 14.1
-      run: sudo xcode-select -switch /Applications/Xcode_14.1.app
-    - name: Run tests
-      run: xcodebuild clean test -project "ENG-SOFTWARE-APP.xcodeproj" -scheme "ENG-SOFTWARE-APP" -destination "platform=iOS Simulator,name=iPhone 11 Pro Max,OS=latest"
-    - name: Build App
-      run: xcodebuild -project "ENG-SOFTWARE-APP.xcodeproj" -scheme "ENG-SOFTWARE-APP" -destination "generic/platform=iOS" -configuration Release build CODE_SIGNING_ALLOWED=NO
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Build
+        run: |
+          xcodebuild clean build analyze test -scheme RenetikEvent -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 11'
