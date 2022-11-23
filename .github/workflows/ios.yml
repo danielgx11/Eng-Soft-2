@@ -9,8 +9,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Force Xcode 11
-      run: sudo xcode-select -switch /Applications/Xcode_11.3.app
+    - name: Force Xcode 14.1
+      run: sudo xcode-select -switch /Applications/Xcode_14.1.app
     - name: Run tests
       run: xcodebuild clean test -project "ENG-SOFTWARE-APP.xcodeproj" -scheme "ENG-SOFTWARE-APP" -destination "platform=iOS Simulator,name=iPhone 11 Pro Max,OS=latest"
     - name: Build App
