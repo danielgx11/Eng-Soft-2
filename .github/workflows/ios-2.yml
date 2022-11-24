@@ -14,14 +14,10 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v1
 
-    - name: Set Gems
-      run: |
-        gem install bundler
-        bundle install
     - name: Set Xcode version
       uses: maxim-lobanov/setup-xcode@v1.1
       with:
-        xcode-version: 12.1
+        xcode-version: 14.0.1
 
     - name: Build
       run: |
@@ -38,14 +34,10 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v1
 
-    - name: Set Gems
-      run: |
-        gem install bundler
-        bundle install
     - name: Set Xcode version
       uses: maxim-lobanov/setup-xcode@v1.1
       with:
-        xcode-version: 12.1
+        xcode-version: 14.0.1
 
     - name: Test
       run: |
